@@ -1,0 +1,30 @@
+.main-title-container {
+    margin-top: 35vh;
+}
+
+.Main {
+    text-align: center;
+}
+
+.main-title {
+    color: white;
+    font-size: 70px;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.main-sub-title {
+    margin: 0 auto;
+    font-size: 40px;
+    color: white;
+}
+
+h3 li a {
+    margin: 0 12px;
+    color: white;
+    text-decoration: underline;
+}
+
+h3 li a:hover {
+    color: gray;
+}
