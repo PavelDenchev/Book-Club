@@ -4,6 +4,7 @@ import './App.css';
 import Navigation from '../Navigation/Navigation'
 import Main from '../Main/Main'
 import BookContainer from '../Books/BookContainer/BookContainer'
+import CreateBook from '../Books/CreateBook/CreateBook'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
           <Route path="/" exact render={Main} />
           <Route path="/books" render={BookContainer} />
+          <Route path="/createBook" render={CreateBook} />
         </Switch>
       </div>
     </BrowserRouter>

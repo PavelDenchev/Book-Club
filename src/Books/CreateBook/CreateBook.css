@@ -1,0 +1,52 @@
+.create-book {
+    width: 70%;
+    background-color: #F4F2E9;
+    margin: 0 auto;
+    border: 3px solid #463020;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    color: #463020;
+}
+
+.create-book-title {
+    margin: 30px 0;
+    font-size: 50px;
+}
+
+.create-book-form {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-evenly;
+    font-size: 40px;
+    text-align: left;
+}
+
+.create-book-button {
+    margin: 50px 0;
+    border: 2px solid #463020;
+    padding: 15px 30px;
+    border-radius: 20px;
+    color: #463020;
+    background-color: #F4F2E9;
+}
+
+.create-book-button:hover {
+    background-color: #463020;
+    color: white;
+}
+
+.create-book-form input, select {
+    font-size: 30px;
+}
+
+.create-book-form input, textarea, select {
+    border: 1px solid #463020;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.create-book-form input, label {
+    margin: 20px 0;
+}

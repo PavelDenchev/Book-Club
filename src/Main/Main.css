@@ -18,13 +18,3 @@
     font-size: 40px;
     color: white;
 }
-
-h3 li a {
-    margin: 0 12px;
-    color: white;
-    text-decoration: underline;
-}
-
-h3 li a:hover {
-    color: gray;
-}
