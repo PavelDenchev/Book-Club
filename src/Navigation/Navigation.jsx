@@ -1,14 +1,15 @@
 import React from 'react';
 import './Navigation.css';
-import Link from '../shared/Link/Link';
+import { Link } from 'react-router-dom';
+
 
 function Navigation() {
     return (
         <nav className="navigation">
             <ul className="navigation-list">
-                <li className="navigation-title"><h1>Book Club</h1></li>
-                <Link to="#">Home</Link>
-                <Link to="#">Browse Books</Link>
+                <li className="navigation-title"><Link to="/"><h1>Book Club</h1></Link></li>
+                <li className="navigation-item button"><Link to="/books">Browse Books</Link></li>
+                <li className="navigation-item button"><Link to="#">Recommend a Book</Link></li>
             </ul>
         </nav>
     );

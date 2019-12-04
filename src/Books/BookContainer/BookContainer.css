@@ -1,0 +1,19 @@
+.books-page {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #F4F2E9;
+    border-radius: 20px;
+}
+
+.books-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-around;
+}
+
+.books-page-title {
+    padding-top: 20px;
+    font-size: 50px;
+    text-align: center;
+    color: #463020;
+}

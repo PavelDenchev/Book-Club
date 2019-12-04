@@ -1,0 +1,33 @@
+.book {
+    margin: 40px 0;
+    text-align: center;
+    width: 275px;
+    height: auto;
+    color: #463020;
+}
+
+.book-title {
+    margin: 0;
+    padding: 5px
+}
+
+.book-cover {
+    max-width: 100%;
+    height: auto;
+}
+
+.book-author {
+    padding: 0 3px;
+}
+
+.book-description {
+    padding: 0 10px;
+}
+
+.book-details {
+    margin-top: 40px;
+}
+
+.book-details a{
+    padding: 10px 40px;
+}

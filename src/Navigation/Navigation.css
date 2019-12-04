@@ -1,11 +1,12 @@
 .navigation {
     background-color: #F4F2E9;
     padding: 10px;
+    border-bottom: 3px solid #463020;
 }
 
 .navigation-list {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     column-gap: 20px;
     justify-content: left;
     align-items: center;
@@ -21,14 +22,18 @@
     color: #463020;
 }
 
-nav .listItem a {
+.navigation-item {
+    list-style-type: none;
+}
+
+/* .navigation-item a {
     border: 2px solid #463020;
     padding: 13px;
     border-radius: 20px;
     color: #463020;
 }
 
-nav .listItem a:hover {
+.navigation-item a:hover {
     background-color: #463020;
     color: white;
-}
+} */
