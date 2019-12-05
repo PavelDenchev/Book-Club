@@ -3,6 +3,8 @@
     margin: 0 auto;
     background-color: #F4F2E9;
     border-radius: 20px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 
 .books-container {
@@ -12,8 +14,9 @@
 }
 
 .books-page-title {
-    padding-top: 20px;
+    padding: 40px 0 20px 0;
     font-size: 50px;
     text-align: center;
     color: #463020;
+    margin: 0;
 }

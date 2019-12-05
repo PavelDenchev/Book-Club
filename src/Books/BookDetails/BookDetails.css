@@ -1,0 +1,106 @@
+.book-details {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #F4F2E9;
+    border-radius: 20px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding: 50px;
+}
+
+.book-details-grid {
+    display: grid;
+    grid-template-areas:
+    'image title'
+    'image author'
+    'image description'
+    'buttons ratings';
+    column-gap: 50px;
+    text-align: center;
+    align-items: center;
+}
+
+.book-details-grid *{
+    margin: 0;
+}
+
+.book-details-ratings {
+    grid-area: ratings;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.book-details-title {
+    grid-area: title;
+    font-size: 60px;
+}
+
+.book-details-image {
+    grid-area: image;
+    border-radius: 20px;
+}
+
+.book-details-description {
+    grid-area: description;
+    text-align: left;
+    font-size: 20px;
+}
+
+.book-details-author {
+    grid-area: author;
+    font-size: 40px;
+}
+
+.book-details-buttons {
+    grid-area: buttons;
+    margin: 30px 0;
+}
+
+.book-details-button {
+    margin: 0 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+}
+
+.book-details-like {
+    background-color: green;
+}
+
+.book-details-dislike {
+    background-color: red;
+}
+
+.book-details-favourite {
+    background-color: blue;
+}
+
+.book-details-button-comment {
+    background-color: #4d4d4d;
+}
+
+.book-details-comment-area {
+    display: block;
+    margin: 40px auto;
+    height: 50px;
+}
+
+.book-details-comment-form {
+    text-align: center;
+}
+
+.book-details-no-comments {
+    text-align: center;
+    font-size: 30px;
+}
+
+.book-details-comments {
+    margin-top: 30px;
+}
+
+.book-details-comments-title {
+    text-align: center;
+    font-size: 40px;
+}
