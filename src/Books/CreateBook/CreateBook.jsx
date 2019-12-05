@@ -3,10 +3,10 @@ import './CreateBook.css';
 
 function CreateBook() {
     return (
-        <div className="create-book">
-            <h1 className="create-book-title">Recommend a book</h1>
+        <div className="form">
+            <h1 className="form-title">Recommend a book</h1>
             <form>
-                <div className="create-book-form">
+                <div className="form-grid">
                     <label htmlFor="title">Title:</label>
                     <input type="text" name="title" id="title" />
                     <label htmlFor="author">Author:</label>
@@ -40,7 +40,7 @@ function CreateBook() {
                         <option value="Thriller">Thriller</option>
                     </select>
                 </div>
-                <input className="create-book-button" type="submit" value="Submit"/>
+                <input className="form-button" type="submit" value="Submit"/>
             </form>
         </div>
     );

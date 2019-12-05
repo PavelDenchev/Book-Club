@@ -5,6 +5,8 @@ import Navigation from '../Navigation/Navigation'
 import Main from '../Main/Main'
 import BookContainer from '../Books/BookContainer/BookContainer'
 import CreateBook from '../Books/CreateBook/CreateBook'
+import Login from '../User/Login/Login'
+import Register from '../User/Register/Register'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/" exact render={Main} />
           <Route path="/books" render={BookContainer} />
           <Route path="/createBook" render={CreateBook} />
+          <Route path="/login" render={Login} />
+          <Route path="/register" render={Register} />
         </Switch>
       </div>
     </BrowserRouter>

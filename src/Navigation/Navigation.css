@@ -6,7 +6,7 @@
 
 .navigation-list {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     column-gap: 20px;
     justify-content: left;
     align-items: center;
