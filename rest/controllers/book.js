@@ -1,6 +1,11 @@
 const models = require('../models');
 
 module.exports = {
+  get: (req, res, next) => {
+    models.Book.find().populate('user')
+    .then((books) => res.send(books))
+  },
+
   post: {
     add: (req, res, next) => {
       const { title, author, description, coverUrl, genre, user } = req.body

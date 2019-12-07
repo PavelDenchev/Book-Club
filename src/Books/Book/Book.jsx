@@ -2,17 +2,17 @@ import React from 'react';
 import './Book.css';
 import { Link } from 'react-router-dom';
 
-function Book() {
+function Book({ id, title, author, description, coverUrl }) {
     return (
         <div className="book">
             <img
                 className="book-cover"
-                src="https://i.pinimg.com/originals/49/80/fc/4980fcdbb14f52b06bc50d01e23d174b.jpg"
+                src={coverUrl}
                 alt="pic"
             />
-            <h2 className="book-title">The Witcher</h2>
-            <p className="book-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem aliquam magni vitae animi ratione laboriosam id hic nemo, dolore nihil nisi quae necessitatibus veniam facere officiis dignissimos! Quod, doloremque possimus!</p>
-            <h3 className="book-author">Author: Andrzej Sapkowski</h3>
+            <h2 className="book-title">{title}</h2>
+            <p className="book-description">{description}</p>
+            <h3 className="book-author">Author: {author}</h3>
             <div className="book-details button"><Link to="/books/details">Details</Link></div>
         </div>
     );
