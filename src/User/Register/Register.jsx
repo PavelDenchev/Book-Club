@@ -1,23 +1,69 @@
 import React from 'react';
 import './Register.css';
+import { useHistory } from 'react-router-dom';
+import useForm from 'react-hook-form'
+import axios from 'axios'
 
-function Register() {
+
+export default function Register() {
+    const history = useHistory();
+    const { register, handleSubmit, watch, errors } = useForm();
+
+    const onSubmit = (data) => {
+        const { username, password } = data
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:9999/api/user/register',
+            data: {
+                username: username,
+                password: password
+            }
+        })
+        .then(() => {
+            history.push('/')
+        })
+        .catch(err => console.error(err))
+    }
+
     return (
         <div className="form">
             <h1 className="form-title">Register</h1>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                {errors.username && <p className="form-error">{errors.username.message}</p>}
+                {errors.password && <p className="form-error">{errors.password.message}</p>}
+                {errors.repeatPassword && <p className="form-error">Passwords don't match.</p>}
                 <div className="form-grid">
                     <label htmlFor="username">Username:</label>
-                    <input type="text" name="username" id="username" />
+                    <input type="text" name="username" id="username"
+                        ref={register({
+                            required: "Username is required",
+                            minLength: {
+                                value: 4,
+                                message: "Username must be atleast 4 characters long."
+                            },
+                            maxLength: {
+                                value: 15,
+                                message: "Username must not be longer than 15 characters."
+                            }
+                        })} />
                     <label htmlFor="password">Password:</label>
-                    <input type="text" name="password" id="password" />
+                    <input type="password" name="password" id="password"
+                        ref={register({
+                            required: "Password is required",
+                            minLength: {
+                                value: 6,
+                                message: "Password must be atleast 6 characters long."
+                            },
+                        })} />
                     <label htmlFor="repeatPassword">Repeat Password:</label>
-                    <input type="text" name="repeatPassword" id="repeatPassword" />
+                    <input type="password" name="repeatPassword" id="repeatPassword"
+                        ref={register({
+                            validate: (value) => { return value === watch("password") }
+                        })} />
                 </div>
-                <input className="form-button" type="submit" value="Register"/>
+                <input className="form-button" type="submit" value="Register" />
             </form>
         </div>
     );
 }
-
-export default Register;

@@ -40,7 +40,7 @@ function CreateBook() {
                         <option value="Thriller">Thriller</option>
                     </select>
                 </div>
-                <input className="form-button" type="submit" value="Submit"/>
+                <input className="form-button" type="submit" value="Submit" />
             </form>
         </div>
     );
