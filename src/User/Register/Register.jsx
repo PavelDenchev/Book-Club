@@ -20,7 +20,7 @@ export default function Register() {
                 password: password
             }
         })
-        .then(() => {
+        .then((res) => {
             history.push('/')
         })
         .catch(err => console.error(err))

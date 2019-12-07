@@ -26,7 +26,7 @@ class App extends React.Component {
     const cookies = parseCookies();
     const isLogged = !!cookies['x-auth-token'];
     this.state = {
-      isLogged: isLogged
+      isLogged: isLogged,
     };
   }
 
@@ -39,18 +39,17 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.isLogged)
     return (
       <BrowserRouter>
         <div>
           <Navigation isLogged = {this.state.isLogged} />
           <Switch>
             <Route path="/" exact component={Main} />
-            { !this.state.isLogged && <Route path="/login" exact render={() => <Login isLogged={this.state.isLogged} setLoggedTrue={this.setLoggedTrue}/>} /> }
+            { !this.state.isLogged && <Route path="/login" exact render={() => <Login setLoggedTrue={this.setLoggedTrue} />} /> }
             { !this.state.isLogged && <Route path="/register" exact component={Register} /> }
             { this.state.isLogged && <Route path="/logout" exact render={() => <Logout setLoggedFalse={this.setLoggedFalse}/>} /> }
             <Route path="/books" exact component={BookContainer} />
-            { this.state.isLogged && <Route path="/books/create" exact component={CreateBook} /> } 
+            { this.state.isLogged && <Route path="/books/create" exact render={() => <CreateBook />} /> } 
             { this.state.isLogged && <Route path="/books/details" exact component={BookDetails} />}
             <Route path="*">
               <NotFound />

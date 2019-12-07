@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import useForm from 'react-hook-form'
 import axios from 'axios'
 
-function Login({ isLogged, setLoggedTrue }) {
+function Login({ setLoggedTrue }) {
     const [authError, setAuthError] = useState("");
     const history = useHistory();
     const { register, handleSubmit } = useForm();
@@ -21,7 +21,9 @@ function Login({ isLogged, setLoggedTrue }) {
             },
             withCredentials: true
         })
-            .then(() => {
+            .then((res) => {
+                console.log(res.data)
+                sessionStorage.setItem('currentUserId', res.data._id)
                 setLoggedTrue()
                 history.push('/')
             })

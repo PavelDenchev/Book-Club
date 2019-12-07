@@ -13,6 +13,7 @@ function Logout({ setLoggedFalse }) {
             withCredentials: true
         })
         .then(() => {
+            sessionStorage.clear();
             setLoggedFalse()
             history.push('/')
         })

@@ -1,22 +1,79 @@
 import React from 'react';
 import './CreateBook.css';
+import { useHistory } from 'react-router-dom';
+import useForm from 'react-hook-form'
+import axios from 'axios'
 
-function CreateBook() {
+function CreateBook({ currentUserId }) {
+    const history = useHistory();
+    const { register, handleSubmit, errors } = useForm();
+    const onSubmit = (data) => {
+        const { title, author, description, coverImageUrl, genre } = data
+        const _id = sessionStorage.getItem('currentUserId')
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:9999/api/book/create',
+            data: {
+                title: title,
+                author: author,
+                description: description,
+                coverUrl: coverImageUrl,
+                genre: genre,
+                user: _id
+            },
+            withCredentials: true
+        })
+        .then((res) => {
+            console.log(res)
+            history.push('/')
+        })
+        .catch(err => console.error(err))
+    }
+
     return (
         <div className="form">
             <h1 className="form-title">Recommend a book</h1>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
+            {errors.title && <p className="form-error">{errors.title.message}</p>}
+            {errors.author && <p className="form-error">{errors.author.message}</p>}
+            {errors.description && <p className="form-error">{errors.description.message}</p>}
+            {errors.coverImageUrl && <p className="form-error">{errors.coverImageUrl.message}</p>}
+            {errors.genre && <p className="form-error">{errors.genre.message}</p>}
                 <div className="form-grid">
                     <label htmlFor="title">Title:</label>
-                    <input type="text" name="title" id="title" />
+                    <input type="text" name="title" id="title" ref={register({
+                        required: "Title is required",
+                        minLength: {
+                            value: 4,
+                            message: "Title must be atleast 4 characters long."
+                        }
+                    })} />
                     <label htmlFor="author">Author:</label>
-                    <input type="text" name="author" id="author" />
+                    <input type="text" name="author" id="author" ref={register({
+                        required: "Author is required",
+                        minLength: {
+                            value: 4,
+                            message: "Author must be atleast 4 characters long."
+                        }
+                    })} />
                     <label htmlFor="description">Description:</label>
-                    <textarea name="description" id="description" />
+                    <textarea name="description" id="description" ref={register({
+                        required: "Description is required",
+                        minLength: {
+                            value: 50,
+                            message: "Description must be atleast 50 characters long."
+                        },
+                        maxLength: {
+                            value: 1000,
+                            message: "Description cannot be longer than 1000 characters."
+                        }
+                    })} />
                     <label htmlFor="coverImageUrl">Cover image url:</label>
-                    <input type="text" name="coverImageUrl" id="coverImageUrl" />
+                    <input type="text" name="coverImageUrl" id="coverImageUrl" ref={register({required: "Cover image url is required"})} />
                     <label htmlFor="genre">Genre:</label>
-                    <select name="genre" id="genre">
+                    <select name="genre" id="genre" ref={register({required: "Genre is required"})}>
+                        <option value="">Choose a genre</option>
                         <option value="Biography">Biography</option>
                         <option value="Business">Business</option>
                         <option value="Children's">Children's</option>

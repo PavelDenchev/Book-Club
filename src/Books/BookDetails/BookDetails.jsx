@@ -11,7 +11,7 @@ function BookDetails() {
                     src="https://i.pinimg.com/originals/49/80/fc/4980fcdbb14f52b06bc50d01e23d174b.jpg"
                     alt="pic"
                 />
-                <p className="book-details-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Non odio euismod lacinia at quis risus sed vulputate. Amet consectetur adipiscing elit duis tristique sollicitudin nibh sit. Commodo ullamcorper a lacus vestibulum sed arcu. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur. Id ornare arcu odio ut. Faucibus turpis in eu mi bibendum neque egestas congue.</p>
+                <p className="book-details-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Non odio euismod lacinia at quis risus sed vulputate. Amet consectetur adipiscing elit duis tristique sollicitudin nibh sit. Commodo ullamcorper a lacus vestibulum sed arcu. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur. Id ornare arcu odio ut. Faucibus turpis in eu mi bibendum neque egestas congue. </p>
                 <h3 className="book-details-author">Author: Andrzej Sapkowski</h3>
                 <div className="empty"></div>
                 <div className="book-details-buttons">
