@@ -22,7 +22,6 @@ function Login({ setLoggedTrue }) {
             withCredentials: true
         })
             .then((res) => {
-                sessionStorage.setItem('currentUserId', res.data._id)
                 setLoggedTrue()
                 history.push('/')
             })

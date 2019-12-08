@@ -5,11 +5,12 @@
     border-radius: 20px;
     margin-top: 5vh;
     margin-bottom: 5vh;
+    border: 3px solid #463020;
 }
 
 .books-container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     justify-content: space-around;
 }
 
@@ -19,4 +20,15 @@
     text-align: center;
     color: #463020;
     margin: 0;
+}
+
+.books-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.books-page-empty {
+    color: #463020;
+    font-size: 30px;
+    text-align: center;
 }

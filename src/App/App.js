@@ -48,9 +48,9 @@ class App extends React.Component {
             { !this.state.isLogged && <Route path="/login" exact render={() => <Login setLoggedTrue={this.setLoggedTrue} />} /> }
             { !this.state.isLogged && <Route path="/register" exact component={Register} /> }
             { this.state.isLogged && <Route path="/logout" exact render={() => <Logout setLoggedFalse={this.setLoggedFalse}/>} /> }
-            <Route path="/books" exact component={BookContainer} />
+            <Route path="/books" exact render={() => <BookContainer isLogged={this.state.isLogged} />} />
             { this.state.isLogged && <Route path="/books/create" exact render={() => <CreateBook />} /> } 
-            { this.state.isLogged && <Route path="/books/details" exact component={BookDetails} />}
+            { this.state.isLogged && <Route path="/books/details/:id" exact component={BookDetails} />}
             <Route path="*">
               <NotFound />
             </Route>

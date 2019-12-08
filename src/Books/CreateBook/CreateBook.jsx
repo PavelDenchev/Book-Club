@@ -4,12 +4,11 @@ import { useHistory } from 'react-router-dom';
 import useForm from 'react-hook-form'
 import axios from 'axios'
 
-function CreateBook({ currentUserId }) {
+function CreateBook() {
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = (data) => {
         const { title, author, description, coverImageUrl, genre } = data
-        const _id = sessionStorage.getItem('currentUserId')
 
         axios({
             method: 'post',
@@ -20,12 +19,10 @@ function CreateBook({ currentUserId }) {
                 description: description,
                 coverUrl: coverImageUrl,
                 genre: genre,
-                user: _id
             },
             withCredentials: true
         })
         .then((res) => {
-            console.log(res)
             history.push('/')
         })
         .catch(err => console.error(err))
