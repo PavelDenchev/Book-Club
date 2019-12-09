@@ -45,7 +45,12 @@ const bookSchema = new Schema({
     user: {
         type: ObjectId,
         ref: "User"
-    }
+    },
+
+    comments: [{
+        type: ObjectId,
+        ref: "Comment"
+    }]
 })
 
 module.exports = new Model('Book', bookSchema);

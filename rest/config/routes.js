@@ -6,5 +6,7 @@ module.exports = (app) => {
 
     app.use('/api/book', router.book);
 
+    app.use('/api/comment', router.comment);
+    
     app.use('*', (req, res, next) => res.send('<h1> Something went wrong. Try again. :thumbsup: </h1>'))
 };

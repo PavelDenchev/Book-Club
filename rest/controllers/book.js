@@ -12,6 +12,8 @@ module.exports = {
         const id = req.params.id
         const user = req.user
         models.Book.findById(id)
+        .populate('user')
+        .populate('comments')
         .then((book) => res.send([book, user]))
         .catch(next)
       }
@@ -46,7 +48,7 @@ module.exports = {
       .then((updatedBook) => {
         return Promise.all([
           models.User.findByIdAndUpdate({ _id: userId }, { $push: { likedBooks: updatedBook } }, {new: true}),
-          models.Book.findOne({ _id: updatedBook._id })
+          models.Book.findOne({ _id: updatedBook._id }).populate("comments")
         ]);
       })
       .then((result) => {
@@ -67,7 +69,7 @@ module.exports = {
       .then((updatedBook) => {
         return Promise.all([
           models.User.findByIdAndUpdate({ _id: userId }, { $pull: { likedBooks: updatedBook._id } }, {new: true}),
-          models.Book.findOne({ _id: updatedBook._id })
+          models.Book.findOne({ _id: updatedBook._id }).populate("comments")
         ]);
       })
       .then((result) => {
@@ -88,7 +90,7 @@ module.exports = {
       .then((updatedBook) => {
         return Promise.all([
           models.User.findByIdAndUpdate({ _id: userId }, { $push: { dislikedBooks: updatedBook._id } }, {new: true}),
-          models.Book.findOne({ _id: updatedBook._id })
+          models.Book.findOne({ _id: updatedBook._id }).populate("comments")
         ]);
       })
       .then((result) => {
@@ -109,7 +111,7 @@ module.exports = {
       .then((updatedBook) => {
         return Promise.all([
           models.User.findByIdAndUpdate({ _id: userId }, { $pull: { dislikedBooks: updatedBook._id } }, {new: true}),
-          models.Book.findOne({ _id: updatedBook._id })
+          models.Book.findOne({ _id: updatedBook._id }).populate("comments")
         ]);
       })
       .then((result) => {

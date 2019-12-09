@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './BookDetails.css';
+import Comment from '../../Comment/Comment'
 import { useParams } from 'react-router-dom'
+import useForm from 'react-hook-form'
 import axios from 'axios'
   
 
 function BookDetails() {
     const [book, setBook] = useState({})
+    const [comments, setComments] = useState([])
     // const [user, setUser] = useState({})
     const [isRated, setIsRated] = useState("")
     const [isFavourite, setIsFavourite] = useState(false)
+    const { register, handleSubmit, errors, reset } = useForm();
     const { id } = useParams()
 
     useEffect(() => {
@@ -19,6 +23,7 @@ function BookDetails() {
         })
         .then(res => {
             setBook(res.data[0])
+            setComments(res.data[0].comments)
             // setUser(res.data[1])
             if (res.data[1].likedBooks.includes(id)) {
                 setIsRated("liked")
@@ -78,6 +83,23 @@ function BookDetails() {
         .catch((err) => console.error(err))
     }
 
+    const handleComment = (data) => {
+        const { content } = data
+        axios({
+            method: 'post',
+            url: `http://localhost:9999/api/comment/create/${id}`,
+            withCredentials: true,
+            data: {
+                content: content
+            }
+        })
+        .then(res => {
+            setComments(res.data.comments)
+            reset()
+        })
+        .catch((err) => console.error(err))
+    }
+
     const displayFavourite = () => {
         if (isFavourite) {
             return <button className="book-details-button book-details-favourite" onClick={() => handleFavourite("unfavourite")}>Unfavourite</button>
@@ -109,11 +131,20 @@ function BookDetails() {
         }
     }
 
-    
+    let commentComponents;
+        
+    const displayComments = () => {
+        if (comments.length > 0) {
+            commentComponents = comments.map(comment => <Comment key={comment._id} id={comment._id} content={comment.content} userId={comment.user} />)
+            commentComponents.reverse()
+            return <div>{commentComponents}</div>
+        } else {
+            return <p className="book-details-no-comments">There are no comments yet.</p>
+        }
+    }
 
     return (
         <div className="book-details">
-            {console.log(isRated)}
             <div className="book-details-grid">
                 <h1 className="book-details-title">{book.title}</h1>
                 <img
@@ -130,13 +161,14 @@ function BookDetails() {
                     <p className="book-details-dislikes">Dislikes: {book.dislikes}</p>
                 </div>
             </div>
-            <form className="book-details-comment-form">
-                <textarea className="book-details-comment-area" placeholder="Add a comment..." />
-                <button className="book-details-button book-details-button-comment">Comment</button>
+            <form onSubmit={handleSubmit(handleComment)} className="book-details-comment-form">
+                {errors.content && <p className="form-error">{errors.content.message}</p>}
+                <textarea className="book-details-comment-area" name="content" placeholder="Add a comment..." ref={register({required: "Comment can't be empty."})} />
+                <button className="book-details-button book-details-button-comment" type="submit">Comment</button>
             </form>
             <div className="book-details-comments">
                 <h1 className="book-details-comments-title">Comments</h1>
-                <p className="book-details-no-comments">There are no comments yet.</p>
+                {displayComments()}
             </div>
         </div>
     );

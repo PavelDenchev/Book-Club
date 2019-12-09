@@ -3,10 +3,19 @@ const config = require('../config/config');
 const utils = require('../utils');
 
 module.exports = {
-  get: (req, res, next) => {
-    models.User.find()
+  get: {
+    getAll: (req, res, next) => {
+      models.User.find()
       .then((users) => res.send(users))
       .catch(next)
+    },
+
+    getOne: (req, res, next) => {
+      const userId = req.params.id
+      models.User.findOne({_id: userId})
+      .then((user) => res.send(user))
+      .catch(next)
+    }
   },
 
   post: {
