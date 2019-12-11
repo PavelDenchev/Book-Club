@@ -12,7 +12,7 @@ function Main({ isLogged }) {
       url: 'http://localhost:9999/api/book/getAll',
     })
       .then((res) => {
-        setBestBooks(res.data.slice(0, 10))
+        setBestBooks(res.data.slice(0, 12))
       })
       .catch(err => console.error(err))
   }, [])
