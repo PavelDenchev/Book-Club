@@ -11,8 +11,8 @@ module.exports = {
     },
 
     getOne: (req, res, next) => {
-      const userId = req.params.id
-      models.User.findOne({_id: userId})
+      const userId = req.user._id
+      models.User.findOne({_id: userId}).populate("createdBooks").populate("favouriteBooks")
       .then((user) => res.send(user))
       .catch(next)
     }
@@ -21,9 +21,16 @@ module.exports = {
   post: {
     register: (req, res, next) => {
       const { username, password } = req.body;
-      models.User.create({ username, password })
-        .then((createdUser) => res.send(createdUser))
-        .catch(next)
+      models.User.findOne({ username })
+      .then((user) => {
+        if (user) {
+          res.status(403).send('User already exists.');
+        } else {
+          models.User.create({ username, password })
+          .then((createdUser) => res.send(createdUser))
+          .catch(next)
+        }
+      }).catch(next)
     },
 
     login: (req, res, next) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Register.css';
 import { useHistory } from 'react-router-dom';
 import useForm from 'react-hook-form'
@@ -7,6 +7,7 @@ import axios from 'axios'
 
 export default function Register() {
     const history = useHistory();
+    const [regError, setRegError] = useState("");
     const { register, handleSubmit, watch, errors } = useForm();
 
     const onSubmit = (data) => {
@@ -23,7 +24,13 @@ export default function Register() {
         .then((res) => {
             history.push('/')
         })
-        .catch(err => console.error(err))
+        .catch(err => {
+            if (err.response.status === 403) {
+                setRegError(err.response.data)
+            } else {
+                console.error(err)
+            }
+        })
     }
 
     return (
@@ -33,6 +40,7 @@ export default function Register() {
                 {errors.username && <p className="form-error">{errors.username.message}</p>}
                 {errors.password && <p className="form-error">{errors.password.message}</p>}
                 {errors.repeatPassword && <p className="form-error">Passwords don't match.</p>}
+                {regError && <p className="form-error">{regError}</p>}
                 <div className="form-grid">
                     <label htmlFor="username">Username:</label>
                     <input type="text" name="username" id="username"

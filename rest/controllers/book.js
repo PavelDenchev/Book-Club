@@ -4,7 +4,7 @@ module.exports = {
   get: {
       getAll: (req, res, next) => {
         models.Book.find().populate('user')
-        .then((books) => res.send(books))
+        .then((books) => res.send(books.sort((a, b) => b.likes - a.likes)))
         .catch(next)
     },
 
@@ -23,15 +23,23 @@ module.exports = {
     add: (req, res, next) => {
       const { title, author, description, coverUrl, genre } = req.body
       const userId = req.user._id
-      models.Book.create({ title, author, description, coverUrl, genre, user: userId })
-      .then((createdBook) => {
-          return Promise.all([
-              models.User.updateOne({ userId }, { $push: { createdBooks: createdBook } }),
-              models.Book.findOne({ _id: createdBook._id })
-          ])
-      })
-      .then((result) => {
-          res.send(result)
+      models.Book.findOne({ title })
+      .then((book) => {
+        if (book) {
+          res.status("403").send("Book already exists.")
+        } else {
+          models.Book.create({ title, author, description, coverUrl, genre, user: userId })
+          .then((createdBook) => {
+              return Promise.all([
+                  models.User.findByIdAndUpdate({ _id: userId }, { $push: { createdBooks: createdBook } }, {new: true}),
+                  models.Book.findOne({ _id: createdBook._id })
+              ])
+          })
+          .then((result) => {
+              res.send(result)
+          })
+          .catch(next)
+        }
       })
       .catch(next)
     },

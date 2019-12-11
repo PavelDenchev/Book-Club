@@ -30,24 +30,17 @@ function BookContainer({ isLogged }) {
         }
     }
 
-    const bookComponents = displayedBooks.map(book => <Book key={book._id} id={book._id} title={book.title} author={book.author} description={book.description} coverUrl={book.coverUrl} isLogged={isLogged} />)
-
-    const displayBooks = () => {
-        if (bookComponents.length > 0) {
-            return <div className="books-container">
-                        {bookComponents}
-                    </div>
-        } else {
-            return <h2 className="books-page-empty">There are no books yet.</h2>
-        }
-    }
+    const bookComponents = displayedBooks.length > 0 ? displayedBooks.map((book, index) => <Book key={index} id={book._id} title={book.title} author={book.author} description={book.description} coverUrl={book.coverUrl} isLogged={isLogged} />) : null
 
     return (
         <div className="books-page-grid">
             <Aside handleFilter={handleFilter} />
             <div className="books-page">
                 <h1 className="books-page-title">Books</h1>
-                {displayBooks()}
+                {!bookComponents && <h2 className="books-page-empty">There are no books yet.</h2>}
+                <div className="books-container">
+                {bookComponents}
+                </div>
             </div>
         </div>
     );

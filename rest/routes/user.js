@@ -1,9 +1,10 @@
 const controllers = require('../controllers/');
 const router = require('express').Router();
+const { auth } = require('../utils');
 
 router.get('/', controllers.user.get.getAll);
 
-router.get('/getOne/:id', controllers.user.get.getOne);
+router.get('/getOne', auth(), controllers.user.get.getOne);
 
 router.post('/register', controllers.user.post.register);
 

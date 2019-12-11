@@ -1,5 +1,5 @@
 .main-title-container {
-    margin-top: 35vh;
+    margin: 35vh 0;
 }
 
 .Main {
@@ -9,12 +9,15 @@
 .main-title {
     color: white;
     font-size: 70px;
-    margin: 0;
-    margin-bottom: 30px;
+    text-align: center;
 }
 
 .main-sub-title {
     margin: 0 auto;
     font-size: 40px;
     color: white;
+}
+
+.main-top-ten{
+    background-color: #F4F2E9;
 }

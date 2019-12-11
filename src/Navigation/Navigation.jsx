@@ -12,6 +12,7 @@ function Navigation({ isLogged }) {
                 { isLogged && <li className="navigation-item button"><Link to="/books/create">Recommend a Book</Link></li>}
                 { !isLogged && <li className="navigation-item button"><Link to="/login">Login</Link></li> }
                 { !isLogged && <li className="navigation-item button"><Link to="/register">Register</Link></li> }
+                { isLogged && <li className="navigation-item button"><Link to="/profile">Profile</Link></li> }
                 { isLogged && <li className="navigation-item button"><Link to="/logout">Logout</Link></li> }
             </ul>
         </nav>

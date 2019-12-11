@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CreateBook.css';
 import { useHistory } from 'react-router-dom';
 import useForm from 'react-hook-form'
 import axios from 'axios'
 
 function CreateBook() {
+    const [creationError, setCreationError] = useState("");
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = (data) => {
@@ -25,7 +26,13 @@ function CreateBook() {
         .then((res) => {
             history.push('/')
         })
-        .catch(err => console.error(err))
+        .catch(err => {
+            if (err.response.status === 403) {
+                setCreationError(err.response.data)
+            } else {
+                console.error(err)
+            }
+        })
     }
 
     return (
@@ -37,6 +44,7 @@ function CreateBook() {
             {errors.description && <p className="form-error">{errors.description.message}</p>}
             {errors.coverImageUrl && <p className="form-error">{errors.coverImageUrl.message}</p>}
             {errors.genre && <p className="form-error">{errors.genre.message}</p>}
+            {creationError && <p className="form-error">{creationError}</p>}
                 <div className="form-grid">
                     <label htmlFor="title">Title:</label>
                     <input type="text" name="title" id="title" ref={register({
