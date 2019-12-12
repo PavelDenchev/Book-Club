@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './CreateBook.css';
 import { useHistory } from 'react-router-dom';
 import useForm from 'react-hook-form'
 import axios from 'axios'
@@ -36,7 +35,7 @@ function CreateBook() {
     }
 
     return (
-        <div className="form">
+        <div className="container form">
             <h1 className="form-title">Recommend a book</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
             {errors.title && <p className="form-error">{errors.title.message}</p>}

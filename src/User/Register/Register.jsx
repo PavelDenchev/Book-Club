@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Register.css';
 import { useHistory } from 'react-router-dom';
 import useForm from 'react-hook-form'
 import axios from 'axios'
@@ -34,7 +33,7 @@ export default function Register() {
     }
 
     return (
-        <div className="form">
+        <div className="container form">
             <h1 className="form-title">Register</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {errors.username && <p className="form-error">{errors.username.message}</p>}

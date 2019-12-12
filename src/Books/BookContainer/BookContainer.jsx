@@ -5,7 +5,6 @@ import Aside from '../../Aside/Aside'
 import axios from 'axios'
 
 function BookContainer({ isLogged }) {
-
     const [allBooks, setAllBooks] = useState([{}])
     const [displayedBooks, setDisplayedBooks] = useState([{}])
 
@@ -35,7 +34,7 @@ function BookContainer({ isLogged }) {
     return (
         <div className="books-page-grid">
             <Aside handleFilter={handleFilter} />
-            <div className="books-page">
+            <div className="container books-page">
                 <h1 className="books-page-title">Books</h1>
                 {!bookComponents && <h2 className="books-page-empty">There are no books yet.</h2>}
                 <div className="books-container">

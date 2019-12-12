@@ -9,7 +9,6 @@ import axios from 'axios'
 function BookDetails() {
     const [book, setBook] = useState({})
     const [comments, setComments] = useState([])
-    // const [user, setUser] = useState({})
     const [isRated, setIsRated] = useState("")
     const [isFavourite, setIsFavourite] = useState(false)
     const { register, handleSubmit, errors, reset } = useForm();
@@ -24,7 +23,6 @@ function BookDetails() {
         .then(res => {
             setBook(res.data[0])
             setComments(res.data[0].comments)
-            // setUser(res.data[1])
             if (res.data[1].likedBooks.includes(id)) {
                 setIsRated("liked")
             } else if(res.data[1].dislikedBooks.includes(id)) {
@@ -53,7 +51,6 @@ function BookDetails() {
             }
         })
         .then(res => {
-            // setUser(res.data[0])
             setBook(res.data[1])
             
             if (res.data[0].likedBooks.includes(id)) {
@@ -144,7 +141,7 @@ function BookDetails() {
     }
 
     return (
-        <div className="book-details">
+        <div className="container book-details">
             <div className="book-details-grid">
                 <h1 className="book-details-title">{book.title}</h1>
                 <img

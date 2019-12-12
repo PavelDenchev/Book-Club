@@ -1,11 +1,8 @@
 .books-page {
     width: 90%;
     margin: 0 auto;
-    background-color: #F4F2E9;
-    border-radius: 20px;
     margin-top: 5vh;
     margin-bottom: 5vh;
-    border: 3px solid #463020;
 }
 
 .books-container {

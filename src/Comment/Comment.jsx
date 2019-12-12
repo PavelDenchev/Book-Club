@@ -8,7 +8,8 @@ function Comment({ content, userId }) {
     useEffect(() => {
         axios({
             method: 'get',
-            url: `http://localhost:9999/api/user/getOne/${userId}`,
+            url: `http://localhost:9999/api/user/getOne`,
+            withCredentials: true
         })
         .then(res => {
             setUser(res.data)
@@ -19,8 +20,8 @@ function Comment({ content, userId }) {
     return (
         <div>
             <hr/>
-            <p className="comment comment-user">By {user.username}:</p>
-            <p className="comment comment-content">{content}</p>
+            <p className="comment">By {user.username}:</p>
+            <p className="comment">{content}</p>
         </div>
     );
 }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Login.css';
 import { useHistory } from 'react-router-dom';
 import useForm from 'react-hook-form'
 import axios from 'axios'
@@ -36,7 +35,7 @@ function Login({ setLoggedTrue }) {
     }
 
     return (
-        <div className="form">
+        <div className="container form">
             <h1 className="form-title">Login</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {authError && <p className="form-error">{authError}</p>}

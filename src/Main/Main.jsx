@@ -25,7 +25,7 @@ function Main({ isLogged }) {
         <h1 className="main-title">Welcome to the Book Club</h1>
         <h2 className="main-sub-title">A place to find your new favourite book.</h2>
       </div>
-      <div className="books-page">
+      <div className="container books-page">
         <h1 className="books-page-title">Check out our most liked books</h1>
             {!books && <h2 className="books-page-empty">There are no books yet.</h2>}
           <div className="books-container">

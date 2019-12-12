@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Book from '../../Books/Book/Book'
-import './Profile.css';
 import axios from 'axios'
 
 function Profile({ isLogged }) {
@@ -28,14 +27,14 @@ function Profile({ isLogged }) {
   return (
     <div>
       <h1 className="main-title">Welcome {user.username}</h1>
-      <div className="books-page">
+      <div className="container books-page">
         <h1 className="books-page-title">Recommended Books</h1>
         {!createdBookComponents && <h2 className="books-page-empty">You have not recommended any books yet.</h2>}
         <div className="books-container">
           {createdBookComponents}
         </div>
       </div>
-      <div className="books-page">
+      <div className="container books-page">
         <h1 className="books-page-title">Favourite Books</h1>
         {!favouriteBookComponents && <h2 className="books-page-empty">You have not favourited any books yet.</h2>}
         <div className="books-container">

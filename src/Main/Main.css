@@ -1,8 +1,5 @@
 .main-title-container {
     margin: 35vh 0;
-}
-
-.Main {
     text-align: center;
 }
 
@@ -16,8 +13,4 @@
     margin: 0 auto;
     font-size: 40px;
     color: white;
-}
-
-.main-top-ten{
-    background-color: #F4F2E9;
 }

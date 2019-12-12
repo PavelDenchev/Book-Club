@@ -1,13 +1,9 @@
 .book-details {
     width: 70%;
     margin: 0 auto;
-    background-color: #F4F2E9;
-    border-radius: 20px;
     margin-top: 5vh;
     margin-bottom: 5vh;
     padding: 50px;
-    border: 3px solid #463020;
-    color: #463020;
 }
 
 .book-details-grid {
@@ -42,7 +38,7 @@
 .book-details-image {
     grid-area: image;
     border-radius: 20px;
-    width: 500px;
+    width: 400px;
 }
 
 .book-details-description {
