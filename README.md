@@ -4,7 +4,7 @@ An app for book readers to share their favourite books.
 
 ## How to run app:
 
-...
+
 1. Clone/Dowload repository
 2. Open terminal in /rest directory
 3. npm install
@@ -12,7 +12,7 @@ An app for book readers to share their favourite books.
 5. cd ..
 6. npm install
 7. npm start
-...
+
 
 ### Guest users can:
 
