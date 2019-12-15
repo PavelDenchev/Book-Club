@@ -15,6 +15,13 @@ module.exports = {
       models.User.findOne({_id: userId}).populate("createdBooks").populate("favouriteBooks")
       .then((user) => res.send(user))
       .catch(next)
+    },
+
+    getById: (req, res, next) => {
+      const userId = req.params.id
+      models.User.findOne({_id: userId}).populate("createdBooks").populate("favouriteBooks")
+      .then((user) => res.send(user))
+      .catch(next)
     }
   },
 

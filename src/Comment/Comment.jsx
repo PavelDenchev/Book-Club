@@ -8,7 +8,7 @@ function Comment({ content, userId }) {
     useEffect(() => {
         axios({
             method: 'get',
-            url: `http://localhost:9999/api/user/getOne`,
+            url: `http://localhost:9999/api/user/getById/${userId}`,
             withCredentials: true
         })
         .then(res => {
