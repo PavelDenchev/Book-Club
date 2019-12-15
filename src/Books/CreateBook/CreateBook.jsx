@@ -97,7 +97,7 @@ function CreateBook() {
                         <option value="Psychology">Psychology</option>
                         <option value="Romance">Romance</option>
                         <option value="Science">Science</option>
-                        <option value="ScienceFiction">Science Fiction</option>
+                        <option value="Science Fiction">Science Fiction</option>
                         <option value="Thriller">Thriller</option>
                     </select>
                 </div>
