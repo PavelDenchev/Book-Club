@@ -1,6 +1,6 @@
 .books-page {
     width: 90%;
-    margin: 0 auto;
+    margin: 0 5vh;
     margin-top: 5vh;
     margin-bottom: 5vh;
 }
@@ -20,8 +20,7 @@
 }
 
 .books-page-grid {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
+    display: flex;
 }
 
 .books-page-empty {
